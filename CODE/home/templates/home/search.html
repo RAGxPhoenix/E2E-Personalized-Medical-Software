@@ -1,0 +1,255 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home-Page</title>
+    <link rel="stylesheet" href="{% static 'home/search.css' %}">
+    <script src="https://kit.fontawesome.com/803794f851.js" crossorigin="anonymous"></script>
+
+    <style>
+        #navbar {
+            display: flex;
+            align-items: center;
+        }
+        #navbar li {
+            margin-right: 20px;
+            list-style-type: none;
+        }
+        .avatar-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        .avatar-link img {
+            margin-right: 5px;
+            border-radius: 50%;
+            width: 30px; /* Adjust as needed */
+            height: 30px; /* Adjust as needed */
+        }
+        #navbar li a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+        }
+
+        h1 {
+    margin-top: 50px; /* Adjust the value as needed */
+    margin-left: 120px;
+}
+
+
+        #searchOption {
+            margin-top: 30px;
+    padding: 10px; /* Add padding for better appearance */
+    font-size: 16px; /* Increase font size */
+    border: 2px solid #ccc; /* Add border */
+    border-radius: 8px; /* Add border radius for rounded corners */
+    margin-left: 120px;
+}
+
+#searchInput {
+        width: 20%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        margin-left: 120px;
+    }
+    
+    #dropdown {
+        position: absolute;
+        width: calc(100% - 22px);
+        max-height: 200px;
+        overflow-y: auto;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        display: none;
+        margin-left: 120px;
+    }
+    
+    #dropdown div {
+        padding: 10px;
+        cursor: pointer;
+    }
+    
+    #dropdown div:hover {
+        background-color: #f0f0f0;
+    }
+    
+    #infoDisplay {
+        height: 100px;
+        width: 60%;
+        margin-top: 20px;
+        padding: 20px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-left: 120px;
+        margin-bottom: 274px;
+    }
+
+
+    </style>
+    
+
+</head>
+<body>
+<section id="header">
+    <a href="#"><img src="{% static 'home/Image/MediWell_Search.jpg' %}" class="logo" alt=""></a>
+    <ul id="navbar">
+        <li><a href="{% url 'home:home' %}">Home</a></li>
+        <li><a href="{% url 'home:features' %}">Features</a></li>
+        <li><a href="{% url 'home:contact' %}">Contact a Doctor</a></li>
+        <li><a class="active" href="search.html">Search</a></li>
+        <li><a href="{% url 'home:about' %}">About Us</a></li>
+        {% if user.is_authenticated %}
+            <li>
+                <a href="{% url 'profile' %}">
+                    <img class="user-avatar" src="{% static 'home/Image/avatar-icon.png' %}" alt="User Avatar">
+                </a>
+            </li>
+        {% else %}
+            <li><a href="{% url 'signup' %}">Sign Up</a></li>
+        {% endif %}
+    </ul>
+</section>
+
+<h1>Search for Disease or Medicine</h1>
+    <select id="searchOption" onchange="changePlaceholder()">
+        <option value="disease">Search for Disease</option>
+        <option value="medicine">Search for Medicine</option>
+    </select>
+    <br><br>
+    <input type="text" id="searchInput" placeholder="Type a disease...">
+    <div id="dropdown" style="display: none;"></div> <!-- Added a div for dropdown list -->
+    <div id="infoDisplay"></div>
+
+
+<section id="last_line" class="section-p2">
+    <a href="#"><img src="{% static 'home/Image/MediWell_Search.jpg' %}" alt=""></a>
+    <div class="about-us">
+        <button onclick="#">About Us</button>
+    </div>
+    <div class="Blog">
+        <button onclick="#">Blog</button>
+    </div>
+    <div class="Creators">
+        <button onclick="#">Creators</button>
+    </div>
+    <div class="Help Center">
+        <button onclick="#">Help Center</button>
+    </div>
+    <div class="FAQs">
+        <button onclick="#">FAQs</button>
+    </div>
+    <div class="User Guides">
+        <button onclick="#">User Guides</button>
+    </div>
+    <div class="Academy">
+        <button onclick="#">Academy</button>
+    </div>
+    <div class="chat Support">
+        <button onclick="#">chat Support</button>
+    </div>
+    <div class="info">
+        <div class="section-p3">
+            <div class="left">
+                <button onclick="#">Cookies Policy</button>
+            </div>
+            <div class="left">
+                <button onclick="#">Legal Terms</button>
+            </div>
+            <div class="left">
+                <button onclick="#">Privacy Policy</button>
+            </div>
+        </div>
+        <div class="section-p4">
+            <div class="Twitter">
+                <button onclick="#">Twitter</button>
+            </div>
+            <div class="Facebook">
+                <button onclick="#">Facebook</button>
+            </div>
+            <div class="Instagram">
+                <button onclick="#">Instagram</button>
+            </div>
+            <div class="Youtube">
+                <button onclick="#">Youtube</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    var searchInput = document.getElementById('searchInput');
+    var dropdown = document.getElementById('dropdown');
+
+    // Function to change placeholder text based on selected option
+    function changePlaceholder() {
+        var searchOption = document.getElementById('searchOption').value;
+        searchInput.placeholder = searchOption === 'disease' ? 'Type a disease...' : 'Type a medicine...';
+        // Clear input value and info display when option changes
+        searchInput.value = '';
+        document.getElementById('infoDisplay').innerHTML = '';
+    }
+
+    // Event listener for the input event on the text input
+    searchInput.addEventListener('input', function() {
+        var inputText = this.value.trim();
+        var searchOption = document.getElementById('searchOption').value;
+        if (inputText === '') {
+            // If the input is empty, hide the dropdown
+            dropdown.style.display = 'none';
+            return;
+        }
+        fetch(`/searching/?query=${inputText}&option=${searchOption}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.suggestions.length > 0) {
+                    // Display the dropdown with suggestions
+                    dropdown.innerHTML = '';
+                    data.suggestions.forEach(suggestion => {
+                        var option = document.createElement('div');
+                        option.textContent = searchOption === 'disease' ? suggestion.disease : suggestion.medicine;
+                        option.addEventListener('click', function() {
+                            searchInput.value = searchOption === 'disease' ? suggestion.disease : suggestion.medicine;
+                            // Display information when selected
+                            fetchInfo(searchOption, searchOption === 'disease' ? suggestion.disease : suggestion.medicine);
+                            dropdown.style.display = 'none'; // Hide dropdown after selection
+                        });
+                        dropdown.appendChild(option);
+                    });
+                    dropdown.style.display = 'block'; // Show dropdown
+                } else {
+                    // If no suggestions are found, hide the dropdown
+                    dropdown.style.display = 'none';
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+    });
+
+    // Function to fetch information from the server
+    function fetchInfo(option, query) {
+        fetch(`/get-info/?query=${query}&option=${option}`)
+            .then(response => response.json())
+            .then(data => {
+                // Display information
+                var infoDisplay = document.getElementById('infoDisplay');
+                infoDisplay.innerHTML = '<h2>' + (option === 'disease' ? 'Disease' : 'Medicine') + '</h2><p>' + data.info + '</p>';
+            })
+            .catch(error => {
+                console.error('Error fetching info:', error);
+            });
+    }
+</script>
+</body>
+</html>

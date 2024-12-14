@@ -1,0 +1,172 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features</title>
+    <link rel="stylesheet" href="{% static 'home/features.css' %}">
+    <script src="https://kit.fontawesome.com/803794f851.js" crossorigin="anonymous"></script>
+
+    <style>
+        #navbar {
+            display: flex;
+            align-items: center;
+        }
+        #navbar li {
+            margin-right: 20px;
+            list-style-type: none;
+        }
+        .avatar-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        .avatar-link img {
+            margin-right: 5px;
+            border-radius: 50%;
+            width: 30px; /* Adjust as needed */
+            height: 30px; /* Adjust as needed */
+        }
+        #navbar li a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <section id="header">
+        <a href="#"><img src="{% static 'home/Image/MediWell_Features.jpg' %}" class="logo" alt=""></a>
+        <ul id="navbar">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a class="active" href="{% url 'home:features' %}">Features</a></li>
+            <li><a href="{% url 'home:contact' %}">Contact a Doctor</a></li>
+            <li><a href="{% url 'home:search' %}">Search</a></li>
+            <li><a href="{% url 'home:about' %}">About Us</a></li>
+            {% if user.is_authenticated %}
+            <li>
+                <a href="{% url 'profile' %}">
+                    <img class="user-avatar" src="{% static 'home/Image/avatar-icon.png' %}" alt="User Avatar">
+                </a>
+            </li>
+           {% else %}
+           <li><a href="{% url 'signup' %}">Sign Up</a></li>
+           {% endif %}
+        </ul>
+    </section>
+
+    <section id="features">
+        <h2 class="features-heading">Our website, MediWell, offers a diverse array of features designed to cater<br> to the varying needs of our users, providing them with convenient access to a <br>multitude of resources and services tailored to enhance their well-being.</h2>
+        <div class="feature">
+            <div class="feature-content">
+                <div class="feature-summary">
+                    <h3>Predict diseases using symptoms</h3>
+                    <p>Using our advanced disease prediction model, simply input <br>your symptoms, and our system will generate potential disease <br>predictions. It's important to note that these predictions are based <br>on algorithms and data analysis, and while they can provide valuable insights, they are not definitive diagnoses. </p>
+                </div>
+                <img src="{% static 'home/Image/Features-1.jpg' %}" alt="Feature 1 Image" class="feature-image">
+            </div>
+        </div>
+        <div class="feature">
+            <div class="feature-content">
+                <div class="feature-summary">
+                    <h3>Click where it hurts and get advice</h3>
+                    <p>With our interactive body map feature, simply click on the <br>area of your body that's experiencing discomfort, and receive <br>tailored advice on how to alleviate it. Whether it's aching<br> muscles, joint pain, or any other discomfort, our platform provides personalized recommendations to help you <br>find relief and improve your well-being.</p>
+                </div>
+                <img src="{% static 'home/Image/Features-2.jpg' %}" alt="Feature 2 Image" class="feature-image">
+            </div>
+        </div>
+        <div class="feature">
+            <div class="feature-content">
+                <div class="feature-summary">
+                    <h3>Look up diseases and medicines</h3>
+                    <p>Easily access information on diseases and medicines by simply entering <br>their names. Our platform provides concise paragraphs <br>explaining the nature of the disease or the usage of the medicine, empowering you with valuable insights <br>into their characteristics and purposes.</p>
+                </div>
+                <img src="{% static 'home/Image/Features-3.jpg' %}" alt="Feature 3 Image" class="feature-image">
+            </div>
+        </div>
+
+        <div class="feature">
+            <div class="feature-content">
+                <div class="feature-summary">
+                    <h4>Track Patient History</h4>
+                    <p>When you input a patient's information, their medical history is <br>automatically recorded and stored. You can conveniently access <br>this history from your profile whenever needed. This feature allows you to keep track of patients' health <br>records efficiently and ensures easy retrieval for future reference.</p>
+                </div>
+                <img src="{% static 'home/Image/Features-4.jpg' %}" alt="Feature 3 Image" class="feature-image">
+            </div>
+        </div>
+
+        <div class="feature">
+            <div class="feature-content">
+                <div class="feature-summary">
+                    <h3>Suggest Feedbacks to the Admins</h3>
+                    <p>Through the feedback feature, you have the opportunity to propose<br> changes or offer recommendations directly to the administrators. <br>This communication channel enables you to share your insights, suggestions, or concerns with the admins <br>effectively. By utilizing this feature, you can contribute to improving <br>the platform and enhancing user experience collaboratively.</p>
+                </div>
+                <img src="{% static 'home/Image/Features-5.jpg' %}" alt="Feature 3 Image" class="feature-image">
+            </div>
+        </div>
+    </section>
+
+    <script src="{% static 'home/contact_a_Doctor.js' %}"></script>
+
+    <section id="last_line" class="section-p2">
+        <a href="#"><img src="{% static 'home/Image/MediWell_Features.jpg' %}" alt=""></a>
+        <div class="about-us">
+            <button onclick="#">About Us</button>
+        </div>
+        <div class="Blog">
+            <button onclick="#">Blog</button>
+        </div>
+        <div class="Creators">
+            <button onclick="#">Creators</button>
+        </div>
+        <div class="Help Center">
+            <button onclick="#">Help Center</button>
+        </div>
+        <div class="FAQs">
+            <button onclick="#">FAQs</button>
+        </div>
+        <div class="User Guides">
+            <button onclick="#">User Guides</button>
+        </div>
+        <div class="Academy">
+            <button onclick="#">Academy</button>
+        </div>
+        <div class="chat Support">
+            <button onclick="#">chat Support</button>
+        </div>
+        <div class="info">
+            <div class="section-p3">
+                <div class="left">
+                    <button onclick="#">Cookies Policy</button>
+                </div>
+                <div class="left">
+                    <button onclick="#">Legal Terms</button>
+                </div>
+                <div class="left">
+                    <button onclick="#">Privacy Policy</button>
+                </div>
+            </div>
+            <div class="section-p4">
+                <div class="Twitter">
+                    <button onclick="#">Twitter</button>
+                </div>
+                <div class="Facebook">
+                    <button onclick="#">Facebook</button>
+                </div>
+                <div class="Instagram">
+                    <button onclick="#">Instagram</button>
+                </div>
+                <div class="Youtube">
+                    <button onclick="#">Youtube</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
+
+
+

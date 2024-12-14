@@ -1,0 +1,186 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <script src="https://kit.fontawesome.com/803794f851.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'home/about.css' %}">
+
+    <style>
+        #navbar {
+            display: flex;
+            align-items: center;
+        }
+        #navbar li {
+            margin-right: 20px;
+            list-style-type: none;
+        }
+        .avatar-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        .avatar-link img {
+            margin-right: 5px;
+            border-radius: 50%;
+            width: 30px; /* Adjust as needed */
+            height: 30px; /* Adjust as needed */
+        }
+        #navbar li a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <section id="header">
+        <a href="#"><img src="{% static 'home/Image/MediWell_About.jpg' %}" class="logo" alt=""></a>
+        <ul id="navbar">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'home:features' %}">Features</a></li>
+            <li><a href="{% url 'home:contact' %}">Contact a Doctor</a></li>
+            <li><a href="{% url 'home:search' %}">Search</a></li>
+            <li><a class="active" href="{% url 'home:about' %}">About Us</a></li>
+            {% if user.is_authenticated %}
+            <li>
+                <a href="{% url 'profile' %}">
+                    <img class="user-avatar" src="{% static 'home/Image/avatar-icon.png' %}" alt="User Avatar">
+                </a>
+            </li>
+            {% else %}
+             <li><a href="{% url 'signup' %}">Sign Up</a></li>
+            {% endif %}
+        </ul>
+    </section>
+
+    <section id="about">
+        <h2>About Us</h2>
+        <hr> <!-- Added line -->
+        <div class="about-section">
+            <div class="rounded-box1">
+                <p>Welcome to MediWell! We are a dedicated team of six individuals <br>passionate about object-oriented programming (OOP) and its <br>applications in modern software development. Together, we bring <br>a diverse range of experiences and perspectives to the table, allowing <br>us to tackle complex programming challenges with creativity and efficiency.</p>
+            </div>
+            <div class="rounded-box2">
+                <p>At MediWell, our goal is to leverage the principles of object-oriented <br>programming to develop innovative solutions that address <br>real-world problems. Through collaboration, meticulous planning, <br>and continuous iteration, we strive to deliver high-quality software <br>products that meet the needs and expectations of our users.</p>
+            </div>
+            <div class="rounded-box3">
+                <p>Throughout this project, we aim to demonstrate our proficiency in OOP <br>concepts and methodologies, showcasing our ability to design <br>robust, scalable, and maintainable software systems. We are committed<br> to excellence in both our code and our teamwork, embracing <br>challenges as opportunities for growth and learning.</p>
+            </div>
+            <div class="rounded-box4">
+                <p>Thank you for visiting MediWell! We invite you to explore our website <br>and discover the exciting projects we've been working on. <br>If you have any questions or feedback, please don't hesitate to get in touch <br>with us. We look forward to sharing our journey with you.</p>
+            </div>
+        </div>
+        
+        <h3>Our Team</h3> <!-- Added title -->
+        <hr>
+        <div class="people-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Role</th>
+                        <th>Reg. No.</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Debraj Bose (Team Leader)</td>
+                        <td>Backend Developer, Frontend Developer</td>
+                        <td>895</td>
+                    </tr>
+                    <tr>
+                        <td>Amit Sarker</td>
+                        <td>Frontend Developer</td>
+                        <td>869</td>
+                    </tr>
+                    <tr>
+                        <td>Anik Barury</td>
+                        <td>Machine Learning Developer</td>
+                        <td>871</td>
+                    </tr>
+                    <tr>
+                        <td>Nilanjan Dolai</td>
+                        <td>Backend Developer</td>
+                        <td>913</td>
+                    </tr>
+                    <tr>
+                        <td>Amit Chausali</td>
+                        <td>Frontend Developer</td>
+                        <td>866</td>
+                    </tr>
+                    <tr>
+                        <td>Debaditya Mistri</td>
+                        <td>Database Manager</td>
+                        <td>893</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    
+
+    <!-- Add your content for the About Us section here -->
+    
+    <section id="last_line" class="section-p2">
+        <a href="#"><img src="{% static 'home/Image/MediWell_About.jpg' %}" alt=""></a>
+        <div class="about-us">
+            <button onclick="#">About Us</button>
+        </div>
+        <div class="Blog">
+            <button onclick="#">Blog</button>
+        </div>
+        <div class="Creators">
+            <button onclick="#">Creators</button>
+        </div>
+        <div class="Help Center">
+            <button onclick="#">Help Center</button>
+        </div>
+        <div class="FAQs">
+            <button onclick="#">FAQs</button>
+        </div>
+        <div class="User Guides">
+            <button onclick="#">User Guides</button>
+        </div>
+        <div class="Academy">
+            <button onclick="#">Academy</button>
+        </div>
+        <div class="chat Support">
+            <button onclick="#">chat Support</button>
+        </div>
+        <div class="info">
+            <div class="section-p3">
+                <div class="left">
+                    <button onclick="#">Cookies Policy</button>
+                </div>
+                <div class="left">
+                    <button onclick="#">Legal Terms</button>
+                </div>
+                <div class="left">
+                    <button onclick="#">Privacy Policy</button>
+                </div>
+            </div>
+            <div class="section-p4">
+                <div class="Twitter">
+                    <button onclick="#">Twitter</button>
+                </div>
+                <div class="Facebook">
+                    <button onclick="#">Facebook</button>
+                </div>
+                <div class="Instagram">
+                    <button onclick="#">Instagram</button>
+                </div>
+                <div class="Youtube">
+                    <button onclick="#">Youtube</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
+

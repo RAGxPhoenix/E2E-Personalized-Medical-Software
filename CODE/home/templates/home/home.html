@@ -1,0 +1,163 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home-Page</title>
+    <link rel="stylesheet" href="{% static 'home/home.css' %}">
+    <script src="https://kit.fontawesome.com/803794f851.js" crossorigin="anonymous"></script>
+
+    <style>
+        #navbar {
+            display: flex;
+            align-items: center;
+        }
+        #navbar li {
+            margin-right: 20px;
+            list-style-type: none;
+        }
+        .avatar-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        .avatar-link img {
+            margin-right: 5px;
+            border-radius: 50%;
+            width: 30px; /* Adjust as needed */
+            height: 30px; /* Adjust as needed */
+        }
+        #navbar li a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+<section id="header">
+    <a href="#"><img src="{% static 'home/Image/MediWell_Home.jpg' %}" class="logo" alt=""></a>
+    <ul id="navbar">
+        <li><a class="active" href="home.html">Home</a></li>
+        <li><a href="{% url 'home:features' %}">Features</a></li>
+        <li><a href="{% url 'home:contact' %}">Contact a Doctor</a></li>
+        <li><a href="{% url 'home:search' %}">Search</a></li>
+        <li><a href="{% url 'home:about' %}">About Us</a></li>
+        {% if user.is_authenticated %}
+            <li>
+                <a href="{% url 'profile' %}">
+                    <img class="user-avatar" src="{% static 'home/Image/avatar-icon.png' %}" alt="User Avatar">
+                </a>
+            </li>
+        {% else %}
+            <li><a href="{% url 'signup' %}">Sign Up</a></li>
+        {% endif %}
+    </ul>
+</section>
+
+    <section id="get_started">
+        <h4>Decode your Symptoms</br>Discover your Wellness</h4>
+        <h6>MediWell is a platform for empowering health<br>through knowledge</h6>
+        <button onclick="window.location.href='{% url 'patient_info' %}'">Check Symptoms</button>
+        <span class="or-text">or</span>
+        <button onclick="window.location.href='{% url 'body_check' %}'">Get Body Advice</button>
+</section>
+    </section>
+
+    <section id="join_us" class="section-p1">
+        <div class="Avatar">
+            <img src="{% static 'home/Image/Avatar1.jpg' %}">
+        </div>
+        <div class="Avatar">
+            <img src="{% static 'home/Image/Avatar2.jpg' %}">
+        </div>
+        <div class="Avatar">
+            <img src="{% static 'home/Image/Avatar3.jpg' %}">
+        </div>
+        <div class="Avatar">
+            <img src="{% static 'home/Image/Avatar4.jpg' %}">
+        </div>
+        <h6>200k users have joined us!</h6>
+        <h7>We are waiting for you</h7>
+        <h4>" Effortlessly Informative and Reassuing, this website<br>switfly guides users towards understanding their<br>health concerns with ease. "<br>-Prithwish Dey</h4>
+        <button onclick="#"><i class="fa-solid fa-arrow-right"></i></button>
+    </section>
+
+    <section id="join_comm">
+        <h6>At MediHelp, access to our platform is completely free and hassle-free - no sign-up required.<br>
+            However, signing up unlocks the ability to track your symptom history and contributes to<br>
+            community growth by sharing valuable health insights. With comphrehensive support<br>
+            availble, including FAQs and Responsive customer service, MediHelp ensures a seamless<br>
+            user experience for all
+        </h6>
+        {% if not user.is_authenticated %}
+            <h4>Join the Community Today</h4>
+            <div class="signup-container">
+            <button onclick="window.location.href='{% url 'signup' %}'">Sign-Up</button>
+            </div>
+        {% else %}
+            <h4>See What We Have to Offer</h4>
+            <div class="signup-container">
+            <button onclick="window.location.href='{% url 'home:features' %}'">Explore</button>
+            </div>
+        {% endif %}
+    </section>
+
+    <section id="last_line" class="section-p2">
+        <a href="#"><img src="{% static 'home/Image/MediWell_Home.jpg' %}" alt=""></a>
+        <div class="about-us">
+            <button onclick="#">About Us</button>
+        </div>
+        <div class="Blog">
+            <button onclick="#">Blog</button>
+        </div>
+        <div class="Creators">
+            <button onclick="#">Creators</button>
+        </div>
+        <div class="Help Center">
+            <button onclick="#">Help Center</button>
+        </div>
+        <div class="FAQs">
+            <button onclick="#">FAQs</button>
+        </div>
+        <div class="User Guides">
+            <button onclick="#">User Guides</button>
+        </div>
+        <div class="Academy">
+            <button onclick="#">Academy</button>
+        </div>
+        <div class="chat Support">
+            <button onclick="#">chat Support</button>
+        </div>
+        <div class="info">
+            <div class="section-p3">
+                <div class="left">
+                    <button onclick="#">Cookies Policy</button>
+                </div>
+                <div class="left">
+                    <button onclick="#">Legal Terms</button>
+                </div>
+                <div class="left">
+                    <button onclick="#">Privacy Policy</button>
+                </div>
+            </div>
+            <div class="section-p4">
+                <div class="Twitter">
+                    <button onclick="#">Twitter</button>
+                </div>
+                <div class="Facebook">
+                    <button onclick="#">Facebook</button>
+                </div>
+                <div class="Instagram">
+                    <button onclick="#">Instagram</button>
+                </div>
+                <div class="Youtube">
+                    <button onclick="#">Youtube</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</html>

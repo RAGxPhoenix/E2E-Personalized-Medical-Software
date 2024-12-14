@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css?family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Spartan', sans-serif;
+}
+
+
+.section-p1{
+    padding:40px 80px;
+}
+
+.section-m1{
+    margin: 40px 0;
+}
+
+body{
+    width:100%;
+}
+
+#header{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 80px;
+    background: #fc77c0fa;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    position:sticky;
+    top:0;
+    left:0;
+}
+
+#header .logo{
+    width: 200px;
+    height: 80px;
+    
+}
+
+#navbar{
+    display : flex;
+    align-items: end;
+    justify-content: center;
+}
+
+
+#navbar li{
+    list-style: none;
+    padding: 0 20px;
+    position: relative;
+}
+
+#navbar li a{
+    text-decoration: none;
+    font-size:16px;
+    font-weight: 600;
+    color: #1a1a1a;
+    transition: 0.3s ease;
+}
+
+#navbar li a:hover,
+#navbar li a.active{
+    color:rgba(34, 0, 129, 0.474);
+}
+
+#navbar li a.active::after,
+#navbar li a:hover::after{
+    content: "";
+    width: 55%;
+    height: 2px;
+    background: rgba(34, 0, 129, 0.474);
+    position: absolute;
+    bottom:-4px;
+    left: 20px;
+}
+
+
+#last_line {
+    background: #fc77c0fa;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding-top: 40px;
+    /* border: rgb(83, 170, 246);
+    border-style: ridge; */
+    padding-bottom: 30px;
+}
+
+#last_line img{
+    max-width: 200px; /* Set a limited size for the image */
+}
+
+.about-us,
+.Blog,
+.Creators,
+.Help.Center,
+.FAQs,
+.User.Guides,
+.Academy,
+.chat.Support {
+    flex-basis: calc(20% - 10px); /* Set width for each button */
+}
+
+/* Button Styles */
+#last_line button {
+    font-family: inherit;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: transparent;
+    color: rgb(62, 0, 112);
+    text-decoration: none;
+    transition: text-decoration 0.3s ease;
+    width: 100%; /* Make buttons fill the container width */
+}
+
+#last_line button:hover {
+    text-decoration: underline;
+}
+
+/* Media Query for responsiveness */
+@media screen and (max-width: 768px) {
+    .logo {
+        max-width: 80px; /* Adjust logo size for smaller screens */
+    }
+
+    .about-us,
+    .Blog,
+    .Creators,
+    .Help.Center,
+    .FAQs,
+    .User.Guides,
+    .Academy,
+    .chat.Support {
+        flex-basis: calc(50% - 10px); /* Adjust button width for smaller screens */
+    }
+}
+
+/* Media Query for larger screens */
+@media screen and (min-width: 1200px) {
+    .about-us,
+    .Blog,
+    .Creators,
+    .Help.Center,
+    .FAQs,
+    .User.Guides,
+    .Academy,
+    .chat.Support {
+        flex-basis: calc(12.5% - 10px); /* Adjust button width for larger screens */
+    }
+}
+
+#last_line .info {
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap; /* Allow flex items to wrap */
+    justify-content: space-between;
+    border: 1px ridge rgb(83, 170, 246); /* Add a border */
+    box-sizing: border-box; /* Include border in width calculation */
+}
+
+#last_line .info .section-p3 {
+    width: 48%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-sizing: border-box;
+    margin-right: auto; /* Add margin to the right to push it to the left */
+    cursor: default;
+}
+
+#last_line .info .section-p4 {
+    width: 48%;
+    display: flex;
+    flex-direction: row;
+    align-items:end;
+    box-sizing: border-box;
+    margin-left: auto; /* Add margin to the left to push it to the right */
+    cursor: default;
+}
+
+/* Media query for responsiveness */
+@media screen and (max-width: 768px) {
+    #last_line .info .section-p3,
+    #last_line .info .section-p4 {
+        width: 100%;
+        margin-top: 10px;
+        cursor: default;
+    }
+}
+
+

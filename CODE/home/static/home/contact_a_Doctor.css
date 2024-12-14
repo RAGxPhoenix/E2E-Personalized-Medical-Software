@@ -1,0 +1,282 @@
+@import url('https://fonts.googleapis.com/css?family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Spartan', sans-serif;
+}
+
+h1 {
+    font-size: 50px;
+    line-height: 64px;
+    color: #222;
+}
+
+h2 {
+    font-size: 45px;
+    line-height: 54px;
+    color: #222;
+}
+
+h3 {
+    font-size: 40px;
+    line-height: 44px;
+    color: #222;
+}
+
+h4 {
+    font-size: 30px;
+    line-height: 35px;
+    color: #222;
+}
+
+p {
+    font-size: 16px;
+    color: #465b52;
+    margin: 15px 0 20px 0;
+}
+
+body {
+    width: 100%;
+    background-color: #fffffffa;
+}
+
+#header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 80px;
+    background: #55c6fffa;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    position: sticky;
+    top: 0;
+    left: 0;
+}
+
+#header .logo {
+    width: 200px;
+    height: 80px;
+}
+
+#navbar {
+    display: flex;
+    align-items: end;
+    justify-content: center;
+}
+
+#navbar li {
+    list-style: none;
+    padding: 0 20px;
+    position: relative;
+}
+
+#navbar li a {
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1a1a;
+    transition: 0.3s ease;
+}
+
+#navbar li a:hover,
+#navbar li a.active {
+    color: rgb(58, 94, 255);
+}
+
+#navbar li a.active::after,
+#navbar li a:hover::after {
+    content: "";
+    width: 55%;
+    height: 2px;
+    background: rgb(58, 94, 255);
+    position: absolute;
+    bottom: -4px;
+    left: 20px;
+}
+
+#Doctors {
+    background: rgb(196, 236, 255);
+    padding: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#searchInput {
+    padding: 12px 15px; /* Adjust padding for the input */
+    border-radius: 30px;
+    border: 1px solid #ccc;
+    width: 50%; /* Adjust width */
+    max-width: 400px;
+    height: 44px; /* Set height to match button */
+}
+
+#Doctors button {
+    font-family: inherit;
+    font-size: 18px;
+    padding: 12px 15px; /* Adjust padding for the button */
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    background-color: #4F57E9FF;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    width: auto;
+    margin-left: 10px;
+    height: 44px; /* Set height to match input */
+}
+
+#Doctors button:hover {
+    background-color: #3245C2FF;
+}
+
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff; /* White background */
+}
+
+table,
+th,
+td {
+    border: 1px solid #ccc;
+}
+
+th,
+td {
+    padding: 10px;
+    text-align: left;
+    background-color: #fff; /* White background */
+}
+
+th {
+    background-color: #56c3fafa; /* Light blue background */
+    color: #fff; /* White text */
+}
+
+#last_line {
+    background: #55c6fffa;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding-top: 40px;
+    padding-bottom: 30px;
+}
+
+#last_line img {
+    max-width: 200px;
+}
+
+.about-us,
+.Blog,
+.Creators,
+.Help.Center,
+.FAQs,
+.User.Guides,
+.Academy,
+.chat.Support {
+    flex-basis: calc(20% - 10px);
+}
+
+#last_line button {
+    font-family: inherit;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: transparent;
+    color: #4F57E9FF;
+    text-decoration: none;
+    transition: text-decoration 0.3s ease;
+    width: 100%;
+}
+
+#last_line button:hover {
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 768px) {
+    .logo {
+        max-width: 80px;
+    }
+
+    .about-us,
+    .Blog,
+    .Creators,
+    .Help.Center,
+    .FAQs,
+    .User.Guides,
+    .Academy,
+    .chat.Support {
+        flex-basis: calc(50% - 10px);
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .about-us,
+    .Blog,
+    .Creators,
+    .Help.Center,
+    .FAQs,
+    .User.Guides,
+    .Academy,
+    .chat.Support {
+        flex-basis: calc(12.5% - 10px);
+    }
+}
+
+#last_line .info {
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border: 1px ridge rgb(83, 170, 246);
+    box-sizing: border-box;
+}
+
+#last_line .info .section-p3 {
+    width: 48%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-sizing: border-box;
+    margin-right: auto;
+    cursor: default;
+}
+
+#last_line .info .section-p4 {
+    width: 48%;
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    box-sizing: border-box;
+    margin-left: auto;
+    cursor: default;
+}
+
+@media screen and (max-width: 768px) {
+    #last_line .info .section-p3,
+    #last_line .info .section-p4 {
+        width: 100%;
+        margin-top: 10px;
+        cursor: default;
+    }
+}
+

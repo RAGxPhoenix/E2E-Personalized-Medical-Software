@@ -1,0 +1,335 @@
+@import url('https://fonts.googleapis.com/css?family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Spartan', sans-serif;
+}
+
+h1 {
+    font-size: 50px;
+    line-height: 64px;
+    color: #222;
+}
+
+h2 {
+    font-size: 45px;
+    line-height: 54px;
+    color: #222;
+}
+
+h3 {
+    font-size: 40px;
+    line-height: 44px;
+    color: #222;
+}
+
+h4 {
+    font-size: 30px;
+    line-height: 35px;
+    color: #222;
+}
+
+p {
+    font-size: 16px;
+    color: #465b52;
+    margin: 15px 0 20px 0;
+}
+
+body {
+    width: 100%;
+    background-color: #fffffffa;
+}
+
+#header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 80px;
+    background: #5079fffa;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    position: sticky;
+    top: 0;
+    left: 0;
+}
+
+#header .logo {
+    width: 200px;
+    height: 80px;
+}
+
+#navbar {
+    display: flex;
+    align-items: end;
+    justify-content: center;
+}
+
+#navbar li {
+    list-style: none;
+    padding: 0 20px;
+    position: relative;
+}
+
+#navbar li a {
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1a1a;
+    transition: 0.3s ease;
+}
+
+#navbar li a:hover,
+#navbar li a.active {
+    color: rgb(145, 224, 255);
+}
+
+#navbar li a.active::after,
+#navbar li a:hover::after {
+    content: "";
+    width: 55%;
+    height: 2px;
+    background: rgb(147, 224, 255);
+    position: absolute;
+    bottom: -4px;
+    left: 20px;
+}
+
+th {
+    background-color: #568afafa; /* Light blue background */
+    color: #000000; /* White text */
+}
+
+
+/* CSS styles for the About Us section */
+#about {
+    padding: 50px;
+    text-align: center; /* Align the content to the center */
+}
+
+#about h2 {
+    margin-bottom: 10px; /* Reduced margin */
+}
+
+#about h3 {
+    margin-top: 40px; /* Added margin */
+}
+
+#about hr {
+    width: 50%; /* Adjusted width */
+    margin: auto; /* Centered horizontally */
+    margin-bottom: 50px; /* Added margin */
+}
+
+.about-section p {
+    font-size: 20px;
+}
+
+.rounded-box1,
+.rounded-box3 {
+    margin-bottom: 90px; /* Adjust the margin as needed */
+    line-height: 1.6;
+    text-align: left;
+    margin-left: 300px;
+}
+
+.rounded-box2, 
+.rounded-box4 {
+    margin-bottom: 90px; /* Adjust the margin as needed */
+    line-height: 1.6;
+    text-align: left;
+    margin-left: 800px;
+}
+
+
+
+/* CSS styles for the table */
+.people-table {
+    margin-top: 30px; /* Adjusted spacing */
+    margin-bottom: 60px;
+}
+
+/* Centering the table */
+.people-table table {
+    margin: 0 auto; /* Center the table horizontally */
+}
+
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+
+/* Centering the table */
+.people-table table {
+    margin: 0 auto; /* Center the table horizontally */
+}
+
+
+.align-right {
+    text-align: right;
+}
+
+.people-table th,
+.people-table td {
+    padding: 8px; /* Reduce padding */
+}
+
+.people-table th:nth-child(1),
+.people-table td:nth-child(1) {
+    width: 30%; /* Adjust width for Name column */
+}
+
+.people-table th:nth-child(2),
+.people-table td:nth-child(2) {
+    width: 40%; /* Adjust width for Role column */
+}
+
+.people-table th:nth-child(3),
+.people-table td:nth-child(3) {
+    width: 20%; /* Adjust width for Reg. No. column */
+}
+
+/* Adjusted width for table columns */
+.people-table th:nth-child(1),
+.people-table td:nth-child(1) {
+    width: 35%; /* Adjust width for Name column */
+}
+
+.people-table th:nth-child(2),
+.people-table td:nth-child(2) {
+    width: 45%; /* Adjust width for Role column */
+}
+
+.people-table th:nth-child(3),
+.people-table td:nth-child(3) {
+    width: 20%; /* Adjust width for Reg. No. column */
+}
+
+/* Smaller table */
+.people-table table {
+    width: 90%; /* Reduce table width */
+    margin: 0 auto; /* Center the table horizontally */
+}
+
+
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .rounded-box {
+        width: calc(90% - 20px);
+    }
+}
+
+#last_line {
+    background: #5079fffa;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding-top: 40px;
+    padding-bottom: 30px;
+}
+
+#last_line img {
+    max-width: 200px;
+}
+
+.about-us,
+.Blog,
+.Creators,
+.Help.Center,
+.FAQs,
+.User.Guides,
+.Academy,
+.chat.Support {
+    flex-basis: calc(20% - 10px);
+}
+
+#last_line button {
+    font-family: inherit;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: transparent;
+    color: rgb(0, 25, 58);
+    text-decoration: none;
+    transition: text-decoration 0.3s ease;
+    width: 100%;
+}
+
+#last_line button:hover {
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 768px) {
+    .logo {
+        max-width: 80px;
+    }
+
+    .about-us,
+    .Blog,
+    .Creators,
+    .Help.Center,
+    .FAQs,
+    .User.Guides,
+    .Academy,
+    .chat.Support {
+        flex-basis: calc(50% - 10px);
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .about-us,
+    .Blog,
+    .Creators,
+    .Help.Center,
+    .FAQs,
+    .User.Guides,
+    .Academy,
+    .chat.Support {
+        flex-basis: calc(12.5% - 10px);
+    }
+}
+
+#last_line .info {
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border: 1px ridge rgb(83, 170, 246);
+    box-sizing: border-box;
+}
+
+#last_line .info .section-p3 {
+    width: 48%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-sizing: border-box;
+    margin-right: auto;
+    cursor: default;
+}
+
+#last_line .info .section-p4 {
+    width: 48%;
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    box-sizing: border-box;
+    margin-left: auto;
+    cursor: default;
+}
