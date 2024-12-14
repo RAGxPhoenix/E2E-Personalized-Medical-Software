@@ -1,0 +1,379 @@
+@import url('https://fonts.googleapis.com/css?family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Spartan', sans-serif;
+}
+
+h1{
+    font-size: 50px;
+    line-height: 64px;
+    color: #222;
+}
+
+h2{
+    font-size: 45px;
+    line-height: 54px;
+    color: #222;
+}
+
+h3{
+    font-size: 40px;
+    line-height: 44px;
+    color: #222;
+}
+
+h4{
+    font-size: 35px;
+    line-height: 34px;
+    color: #222;
+}
+
+p{
+    font-size: 16px;
+    color: #465b52;
+    margin: 15px 0 20px 0;
+}
+
+.section-p1{
+    padding:40px 80px;
+}
+
+.section-m1{
+    margin: 40px 0;
+}
+
+body{
+    width:100%;
+}
+
+#header{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 80px;
+    background: #f1ae8ffa;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    position:sticky;
+    top:0;
+    left:0;
+}
+
+#header .logo{
+    width: 200px;
+    height: 80px;
+    
+}
+
+#navbar{
+    display : flex;
+    align-items: end;
+    justify-content: center;
+}
+
+
+#navbar li{
+    list-style: none;
+    padding: 0 20px;
+    position: relative;
+}
+
+#navbar li a{
+    text-decoration: none;
+    font-size:16px;
+    font-weight: 600;
+    color: #1a1a1a;
+    transition: 0.3s ease;
+}
+
+#navbar li a:hover,
+#navbar li a.active{
+    color:rgba(34, 0, 129, 0.474);
+}
+
+#navbar li a.active::after,
+#navbar li a:hover::after{
+    content: "";
+    width: 55%;
+    height: 2px;
+    background: rgba(34, 0, 129, 0.474);
+    position: absolute;
+    bottom:-4px;
+    left: 20px;
+}
+
+h1 {
+    margin-top: 40px;
+    margin-bottom: 10px;
+    text-decoration: underline;
+    margin-left: 50px; /* Adjust the value as needed */
+}
+
+/* CSS for profile details */
+
+.profile-detail {
+    margin-top: 30px;
+    margin-bottom: 30px; /* Add space between each detail */
+    margin-left: 60px;
+}
+
+/* CSS for labels */
+.profile-detail label {
+    font-weight: bold;
+}
+
+/* CSS for inputs */
+.profile-detail input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: #ffffff; /* Light gray background */
+    cursor: not-allowed; /* Disable cursor */
+}
+
+
+
+button[type="logout"] {
+    width: auto; /* Responsive width */
+    height: auto; /* Responsive height */
+    font-size: 1.5em; /* Responsive font size */
+    font-weight: 400;
+    line-height: 1.2;
+    color: rgb(255, 255, 255); /* white */
+    background: rgb(252, 70, 70); /* primary-500 */
+    border: none;
+    margin-left: 60px;
+    border-radius: 6px; /* border-m */
+    cursor: pointer;
+    padding: 10px 20px;
+    transition: background 0.3s ease; /* Transition effect */
+    margin-bottom: 140px;
+    margin-top: 50px;
+}
+
+button[type="logout"]:hover {
+    background-color: #d84329;
+}
+
+/* CSS to adjust the position of the "No patient information found" message */
+.no-info-message {
+    margin-left: 50px; /* Adjust the left margin as needed */
+    margin-bottom: 50px;
+}
+
+.line-between-sections {
+    width: 100%;
+    border: none;
+    border-top: 1px solid rgb(71, 71, 71); /* Adjust color and style as needed */
+    margin: 20px 0; /* Adjust margin as needed */
+}
+
+
+#last_line {
+    background: #f1ae8ffa;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding-top: 40px;
+    /* border: rgb(83, 170, 246);
+    border-style: ridge; */
+    padding-bottom: 30px;
+}
+
+#last_line img{
+    max-width: 200px; /* Set a limited size for the image */
+}
+
+.about-us,
+.Blog,
+.Creators,
+.Help.Center,
+.FAQs,
+.User.Guides,
+.Academy,
+.chat.Support {
+    flex-basis: calc(20% - 10px); /* Set width for each button */
+}
+
+/* Button Styles */
+#last_line button {
+    font-family: inherit;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: transparent;
+    color: rgb(62, 0, 112);
+    text-decoration: none;
+    transition: text-decoration 0.3s ease;
+    width: 100%; /* Make buttons fill the container width */
+}
+
+#last_line button:hover {
+    text-decoration: underline;
+}
+
+/* Media Query for responsiveness */
+@media screen and (max-width: 768px) {
+    .logo {
+        max-width: 80px; /* Adjust logo size for smaller screens */
+    }
+
+    .about-us,
+    .Blog,
+    .Creators,
+    .Help.Center,
+    .FAQs,
+    .User.Guides,
+    .Academy,
+    .chat.Support {
+        flex-basis: calc(50% - 10px); /* Adjust button width for smaller screens */
+    }
+}
+
+/* Media Query for larger screens */
+@media screen and (min-width: 1200px) {
+    .about-us,
+    .Blog,
+    .Creators,
+    .Help.Center,
+    .FAQs,
+    .User.Guides,
+    .Academy,
+    .chat.Support {
+        flex-basis: calc(12.5% - 10px); /* Adjust button width for larger screens */
+    }
+}
+
+#last_line .info {
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap; /* Allow flex items to wrap */
+    justify-content: space-between;
+    border: 1px ridge rgb(83, 170, 246); /* Add a border */
+    box-sizing: border-box; /* Include border in width calculation */
+}
+
+#last_line .info .section-p3 {
+    width: 48%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-sizing: border-box;
+    margin-right: auto; /* Add margin to the right to push it to the left */
+    cursor: default;
+}
+
+#last_line .info .section-p4 {
+    width: 48%;
+    display: flex;
+    flex-direction: row;
+    align-items:end;
+    box-sizing: border-box;
+    margin-left: auto; /* Add margin to the left to push it to the right */
+    cursor: default;
+}
+
+/* Media query for responsiveness */
+@media screen and (max-width: 768px) {
+    #last_line .info .section-p3,
+    #last_line .info .section-p4 {
+        width: 100%;
+        margin-top: 10px;
+        cursor: default;
+    }
+}
+
+.search-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    width: 300px; /* Adjust width as needed */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    margin-right: 10px;
+}
+
+.search-container button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.signup-container {
+    margin-bottom: 80px; /* Add margin to the bottom of the container */
+}
+
+
+/* CSS for the feedback form */
+form {
+    margin-top: 20px;
+    width: 60%;
+}
+
+label {
+    font-weight: bold;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical; /* Allow vertical resizing */
+    
+}
+
+button[type="submit"] {
+    width: auto; /* Responsive width */
+    height: auto; /* Responsive height */
+    font-size: 1.5em; /* Responsive font size */
+    font-weight: 400;
+    line-height: 1.2;
+    color: rgb(255, 255, 255); /* white */
+    background: rgb(74, 212, 81); /* primary-500 */
+    border: none;
+    margin-left: 60px;
+    border-radius: 6px; /* border-m */
+    cursor: pointer;
+    padding: 10px 20px;
+    transition: background 0.3s ease; /* Transition effect */
+    margin-bottom: 10px;
+    margin-top: 50px;
+}
+
+button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+
+.submit-feedback-heading {
+    margin-top: 70px;
+    text-decoration: underline; /* Add underline */
+    margin-left: 50px; /* Shift to the right */
+}
+
+/* CSS to position the feedback textarea */
+#feedback {
+    margin-top: 30px;
+    margin-left: 50px; /* Shift to the right */
+}
