@@ -1,0 +1,227 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home-Page</title>
+    <link rel="stylesheet" href="{% static 'authentication/patient_info.css' %}">
+    <script src="https://kit.fontawesome.com/803794f851.js" crossorigin="anonymous"></script>
+
+    <style>
+        #navbar {
+            display: flex;
+            align-items: center;
+        }
+        #navbar li {
+            margin-right: 20px;
+            list-style-type: none;
+        }
+        .avatar-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        .avatar-link img {
+            margin-right: 5px;
+            border-radius: 50%;
+            width: 30px; /* Adjust as needed */
+            height: 30px; /* Adjust as needed */
+        }
+        #navbar li a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+        }
+
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    text-decoration: underline;
+}
+
+#patient-info-form {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+#last_line {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 50px;
+}
+
+#last_line button {
+    background-color: transparent;
+    border: none;
+    color: #007bff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#last_line button:hover {
+    text-decoration: underline;
+}
+
+
+    </style>
+
+</head>
+<section id="header">
+    <a href="#"><img src="{% static 'home/Image/MediWell_Home.jpg' %}" class="logo" alt=""></a>
+    <ul id="navbar">
+        <li><a href="{% url 'home:home' %}">Home</a></li>
+        <li><a href="{% url 'home:features' %}">Features</a></li>
+        <li><a href="{% url 'home:contact' %}">Contact a Doctor</a></li>
+        <li><a href="{% url 'home:search' %}">Search</a></li>
+        <li><a href="{% url 'home:about' %}">About Us</a></li>
+        {% if user.is_authenticated %}
+            <li>
+                <a href="{% url 'profile' %}">
+                    <img class="user-avatar" src="{% static 'home/Image/avatar-icon.png' %}" alt="User Avatar">
+                </a>
+            </li>
+        {% else %}
+            <li><a href="{% url 'signup' %}">Sign Up</a></li>
+        {% endif %}
+    </ul>
+</section>
+
+<body>
+    <h1>Patient Information</h1>
+    <form id="patient-info-form" method="POST" action="{% url 'save_patient_info' %}">
+        {% csrf_token %}
+        <label for="first-name">First Name:</label>
+        <input type="text" id="first-name" name="first-name" required><br><br>
+
+        <label for="last-name">Last Name:</label>
+        <input type="text" id="last-name" name="last-name" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="phone">Phone No:</label>
+        <input type="tel" id="phone" name="phone" required><br><br>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required><br><br>
+
+        <label for="weight">Weight (kg):</label>
+        <input type="number" id="weight" name="weight" required><br><br>
+
+        <label for="height">Height (cm):</label>
+        <input type="number" id="height" name="height" required><br><br>
+
+        <button type="submit">Next</button>
+    </form>
+</body>
+
+
+
+<section id="last_line" class="section-p2">
+    <a href="#"><img src="{% static 'home/Image/MediWell_Home.jpg' %}" alt=""></a>
+    <div class="about-us">
+        <button onclick="#">About Us</button>
+    </div>
+    <div class="Blog">
+        <button onclick="#">Blog</button>
+    </div>
+    <div class="Creators">
+        <button onclick="#">Creators</button>
+    </div>
+    <div class="Help Center">
+        <button onclick="#">Help Center</button>
+    </div>
+    <div class="FAQs">
+        <button onclick="#">FAQs</button>
+    </div>
+    <div class="User Guides">
+        <button onclick="#">User Guides</button>
+    </div>
+    <div class="Academy">
+        <button onclick="#">Academy</button>
+    </div>
+    <div class="chat Support">
+        <button onclick="#">chat Support</button>
+    </div>
+    <div class="info">
+        <div class="section-p3">
+            <div class="left">
+                <button onclick="#">Cookies Policy</button>
+            </div>
+            <div class="left">
+                <button onclick="#">Legal Terms</button>
+            </div>
+            <div class="left">
+                <button onclick="#">Privacy Policy</button>
+            </div>
+        </div>
+        <div class="section-p4">
+            <div class="Twitter">
+                <button onclick="#">Twitter</button>
+            </div>
+            <div class="Facebook">
+                <button onclick="#">Facebook</button>
+            </div>
+            <div class="Instagram">
+                <button onclick="#">Instagram</button>
+            </div>
+            <div class="Youtube">
+                <button onclick="#">Youtube</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

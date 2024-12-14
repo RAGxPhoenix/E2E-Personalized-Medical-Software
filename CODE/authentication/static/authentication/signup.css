@@ -1,0 +1,49 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: #a59af8;
+    background-size: cover;
+    margin: 0;
+    display: flex;
+    align-items:center;
+    justify-content:center;
+    height: 100vh;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 400px; /* Adjust as needed for responsiveness */
+    width: 100%;
+    text-align: left;
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+    display: flex; /* Use flexbox */
+    justify-content: space-around; /* Align items with space around */
+    align-items: center;
+}
+
+.img-container {
+    text-align: center;
+    cursor: pointer;
+}
+
+.img-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.caption {
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+.image-link {
+    text-decoration: none; /* Remove underline from anchor tags */
+}
+
+.or-text {
+    font-weight: bold;
+    font-size: 30px; /* Adjust the size as needed */
+}

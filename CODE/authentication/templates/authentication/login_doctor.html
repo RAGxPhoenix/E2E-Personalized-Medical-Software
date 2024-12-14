@@ -1,0 +1,40 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'authentication/login.css' %}">
+    <title>Log-In Page</title>
+    <script src="https://kit.fontawesome.com/803794f851.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container-left">
+        <form action="{% url 'login_doctor' %}" method="post">
+            {% csrf_token %}
+            <h2>Log-In</h2>
+            
+            <label for="license" id="licenseLabel"><i class="fa-solid fa-id-badge"></i>Medical License Number</label>
+            <input type="text" id="license" name="license">
+
+            <label for="email"><i class="fa-solid fa-envelope"></i>Email</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="password"><i class="fa-solid fa-key"></i>Password</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Log-In</button>
+
+            <div class="extra">
+                <a href="#">Forgot Password? </a>
+                <a href="{% url 'signup' %}">Sign up</a>
+            </div>
+        </form>
+    </div>
+    <div class="container-right">
+        <!-- Add new design for the right side here -->
+    </div>
+</body>
+</html>
+

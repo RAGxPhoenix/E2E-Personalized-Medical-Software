@@ -1,0 +1,253 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home-Page</title>
+    <link rel="stylesheet" href="{% static 'authentication/profile.css' %}">
+    <script src="https://kit.fontawesome.com/803794f851.js" crossorigin="anonymous"></script>
+
+    <style>
+        #navbar {
+            display: flex;
+            align-items: center;
+        }
+        #navbar li {
+            margin-right: 20px;
+            list-style-type: none;
+        }
+        .avatar-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        .avatar-link img {
+            margin-right: 5px;
+            border-radius: 50%;
+            width: 30px; /* Adjust as needed */
+            height: 30px; /* Adjust as needed */
+        }
+        #navbar li a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+        }
+
+        /* Your CSS styles here */
+        table {
+            margin-left: 50px;
+            margin-top: 30px;
+            border-collapse: collapse;
+            width: 50%;
+            margin-bottom: 30px;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .patient-heading {
+            margin-left: 50px;
+            margin-top: 60px;
+    margin-bottom: 10px;
+    text-decoration: underline; /* Add underline */
+    padding-bottom: 5px; /* Add space between the heading and underline */
+}
+
+    </style>
+
+</head>
+<section id="header">
+    <a href="#"><img src="{% static 'home/Image/MediWell_Home.jpg' %}" class="logo" alt=""></a>
+    <ul id="navbar">
+        <li><a href="{% url 'home:home' %}">Home</a></li>
+        <li><a href="{% url 'home:features' %}">Features</a></li>
+        <li><a href="{% url 'home:contact' %}">Contact a Doctor</a></li>
+        <li><a href="{% url 'home:search' %}">Search</a></li>
+        <li><a href="{% url 'home:about' %}">About Us</a></li>
+        
+        {% if user.is_authenticated %}
+            <li>
+                <a class="active" href="{% url 'profile' %}">
+                    <img class="user-avatar" src="{% static 'home/Image/avatar-icon.png' %}" alt="User Avatar">
+                </a>
+            </li>
+        {% else %}
+            <li><a href="{% url 'signup' %}">Sign Up</a></li>
+        {% endif %}
+    </ul>
+</section>
+
+    <main>
+        <section>
+            <!-- Profile details -->
+            <h1>User Profile</h1>
+            <div class="profile-detail">
+                <label for="first-name">First Name:</label>
+                <input type="text" id="first-name" value="{{ user.first_name }}" disabled>
+            </div>
+            <div class="profile-detail">
+                <label for="last-name">Last Name:</label>
+                <input type="text" id="last-name" value="{{ user.last_name }}" disabled>
+            </div>
+            <div class="profile-detail">
+                <label for="email">Email:</label>
+                <input type="text" id="email" value="{{ user.email }}" disabled>
+            </div>
+            <div class="profile-detail">
+                <label for="phone">Phone Number:</label>
+                <input type="text" id="phone" value="{{ user.phone_number }}" disabled>
+            </div>
+        </section>
+
+        <hr class="line-between-sections">
+
+
+        <h2 class="patient-heading">Patient Information</h2>
+
+        {% if request.session.patient_info %}
+    <table>
+        <tr>
+            <th>Field</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>First Name</td>
+            <td>{{ request.session.patient_info.0 }}</td>
+        </tr>
+        <tr>
+            <td>Last Name</td>
+            <td>{{ request.session.patient_info.1 }}</td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>{{ request.session.patient_info.2 }}</td>
+        </tr>
+        <tr>
+            <td>Phone No</td>
+            <td>{{ request.session.patient_info.3 }}</td>
+        </tr>
+        <tr>
+            <td>Age</td>
+            <td>{{ request.session.patient_info.4 }}</td>
+        </tr>
+        <tr>
+            <td>Weight (kg)</td>
+            <td>{{ request.session.patient_info.5 }}</td>
+        </tr>
+        <tr>
+            <td>Height (cm)</td>
+            <td>{{ request.session.patient_info.6 }}</td>
+        </tr>
+        <tr>
+            <td><strong>Symptoms</strong></td>
+            <td>
+                {% if request.session.symptoms %}
+                    {{ request.session.symptoms|join:", " }}
+                {% else %}
+                    No symptoms entered.
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <td><strong>Predicted Disease</strong></td>
+            <td>
+                {% if request.session.predicted_disease %}
+                    {{ request.session.predicted_disease }}
+                {% endif %}
+            </td>
+        </tr>
+    </table>
+{% else %}
+    <p class="no-info-message">No patient information found.</p>
+{% endif %}
+
+    <hr class="line-between-sections">
+
+
+    <form method="post" action="{% url 'submit_feedback' %}">
+        {% csrf_token %}
+        <h2 class="submit-feedback-heading">Submit Feedback</h2>
+        <textarea id="feedback" name="feedback" rows="4" cols="50"></textarea><br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <hr class="line-between-sections">
+
+
+
+
+        <!-- Logout form -->
+        <section>
+            <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <button type="logout">Logout</button>
+            </form>
+        </section>
+    </main>
+
+    <section id="last_line" class="section-p2">
+        <a href="#"><img src="{% static 'home/Image/MediWell_Home.jpg' %}" alt=""></a>
+        <div class="about-us">
+            <button onclick="#">About Us</button>
+        </div>
+        <div class="Blog">
+            <button onclick="#">Blog</button>
+        </div>
+        <div class="Creators">
+            <button onclick="#">Creators</button>
+        </div>
+        <div class="Help Center">
+            <button onclick="#">Help Center</button>
+        </div>
+        <div class="FAQs">
+            <button onclick="#">FAQs</button>
+        </div>
+        <div class="User Guides">
+            <button onclick="#">User Guides</button>
+        </div>
+        <div class="Academy">
+            <button onclick="#">Academy</button>
+        </div>
+        <div class="chat Support">
+            <button onclick="#">chat Support</button>
+        </div>
+        <div class="info">
+            <div class="section-p3">
+                <div class="left">
+                    <button onclick="#">Cookies Policy</button>
+                </div>
+                <div class="left">
+                    <button onclick="#">Legal Terms</button>
+                </div>
+                <div class="left">
+                    <button onclick="#">Privacy Policy</button>
+                </div>
+            </div>
+            <div class="section-p4">
+                <div class="Twitter">
+                    <button onclick="#">Twitter</button>
+                </div>
+                <div class="Facebook">
+                    <button onclick="#">Facebook</button>
+                </div>
+                <div class="Instagram">
+                    <button onclick="#">Instagram</button>
+                </div>
+                <div class="Youtube">
+                    <button onclick="#">Youtube</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
+
+

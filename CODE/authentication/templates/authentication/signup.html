@@ -1,0 +1,61 @@
+{%load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+    <link rel="stylesheet" href="{% static 'authentication/signup.css' %}">
+    <style>
+        .container {
+            display: inline-block;
+            vertical-align: top; /* Align containers to the top */
+            margin: 0 10px; /* Add margin for spacing between images */
+        }
+
+        .image-link {
+            text-decoration: none; /* Remove default underline for links */
+        }
+
+        .img-container {
+            text-align: center; /* Center the image and caption */
+        }
+
+        .img-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .caption {
+            margin-top: 10px;
+            font-size: 20px;
+        }
+
+        .or-text {
+            font-weight: bold;
+            font-size: 24px; /* Adjust the size as needed */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="{% url 'admin:index' %}" class="image-link">
+            <div class="img-container">
+                <img src="{% static 'authentication/Image/admin.jpeg' %}" alt="Patient Image">
+                <div class="caption">Are you an Admin</div>
+            </div>
+        </a>
+    </div>
+    <p class="or-text"> or </p>
+    <div class="container">
+        <a href="{% url 'signup_user' %}" class="image-link">
+            <div class="img-container">
+                <img src="{% static 'authentication/Image/healthworker.jpg' %}" alt="Doctor Image">
+                <div class="caption">Are you a Health Worker</div>
+            </div>
+        </a>
+    </div>
+</body>
+</html>
