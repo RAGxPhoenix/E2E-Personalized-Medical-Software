@@ -1,0 +1,191 @@
+{%load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>symtomps_checker_input</title>
+    <script src="https://kit.fontawesome.com/803794f851.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'prediction/body_check.css' %}">
+    <style>
+        #navbar {
+            display: flex;
+            align-items: center;
+        }
+        #navbar li {
+            margin-right: 20px;
+            list-style-type: none;
+        }
+        .avatar-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        .avatar-link img {
+            margin-right: 5px;
+            border-radius: 50%;
+            width: 30px; /* Adjust as needed */
+            height: 30px; /* Adjust as needed */
+        }
+        #navbar li a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+        }
+
+        #get-results-button {
+            margin-top: 20px;
+    padding: 10px 30px; /* Adjust padding for smaller height */
+    font-size: 20px; /* Keep font size */
+    border-radius: 8px; /* Keep border radius */
+}
+
+    </style>
+</head>
+<body>
+    <section id="header">
+        <a href="#"><img src="{% static 'home/Image/MediWell_Body.jpg' %}" class="logo" alt=""></a>
+        <ul id="navbar">
+            <li><a href="{% url 'home:home' %}">Home</a></li>
+            <li><a href="{% url 'home:features' %}">Features</a></li>
+            <li><a href="{% url 'home:contact' %}">Contact a Doctor</a></li>
+            <li><a href="{% url 'home:search' %}">Search</a></li>
+            <li><a href="{% url 'home:about' %}">About Us</a></li>
+            {% if user.is_authenticated %}
+                <li>
+                    <a href="{% url 'profile' %}">
+                        <img class="user-avatar" src="{% static 'home/Image/avatar-icon.png' %}" alt="User Avatar">
+                    </a>
+                </li>
+            {% else %}
+                <li><a href="{% url 'signup' %}">Sign Up</a></li>
+            {% endif %}
+        </ul>
+    </section>
+
+    <section id="Mid">
+        <div class="without_button">
+            <div class="Left">
+                <div id="search-history">
+                    <h2>Search History</h2>
+                    <div id="search-history-list"></div>
+                </div>
+                <div id="body-part-message-container">
+                    <textarea id="body-part-message" rows="5" cols="30" readonly></textarea>
+                    <button id="get-results-button">Get Results</button>
+                </div>
+            </div>
+    
+            <div class="Right">
+                <div id="human-body">
+                    <div id="human-body-front">
+                        <div id="head" class="body-part" data-part="Head" onclick="handleBodyPartClick(event)"></div>
+                        <div id="shoulders" class="body-part" data-part="Shoulders" onclick="handleBodyPartClick(event)"></div>
+                        <div id="right-chest" class="body-part" data-part="Right_Chest" onclick="handleBodyPartClick(event)"></div>
+                      <div id="left-chest" class="body-part"data-part="Left_Chest" onclick="handleBodyPartClick(event)"></div>
+                      <div id="stomach" class="body-part" data-part="Stomach" onclick="handleBodyPartClick(event)"></div>
+                      <div id="waist" class="body-part" data-part="Waist" onclick="handleBodyPartClick(event)"></div>
+                      <div id="right-arm" class="body-part" data-part="Right_Arm" onclick="handleBodyPartClick(event)"></div>
+                      <div id="left-arm" class="body-part" data-part="Left_Arm" onclick="handleBodyPartClick(event)"></div>
+                      <div id="right-leg" class="body-part" data-part="Right_Leg" onclick="handleBodyPartClick(event)"></div>
+                      <div id="left-leg" class="body-part" data-part="Left_Leg" onclick="handleBodyPartClick(event)"></div>
+                      <div id="right-foot" class="body-part" data-part="Right_Foot" onclick="handleBodyPartClick(event)"></div>
+                      <div id="left-foot" class="body-part" data-part="Left_Foot" onclick="handleBodyPartClick(event)"></div>
+                    </div>
+                  
+                    <div id="human-body-back">
+                      <div id="head" class="body-part" data-part="Head" onclick="handleBodyPartClick(event)"></div>
+                      <div id="shoulders" class="body-part" data-part="Sholders" onclick="handleBodyPartClick(event)"></div>
+                      <div id="right-back" class="body-part" data-part="Right_Back" onclick="handleBodyPartClick(event)"></div>
+                      <div id="left-back" class="body-part" data-part="Left_Chest" onclick="handleBodyPartClick(event)"></div>
+                      <div id="lower-back" class="body-part" data-part="Lower_Back" onclick="handleBodyPartClick(event)"></div>
+                      <div id="waist" class="body-part" data-part="Waist" onclick="handleBodyPartClick(event)"></div>
+                      <div id="right-arm" class="body-part" data-part="Right_Arm" onclick="handleBodyPartClick(event)"></div>
+                      <div id="left-arm" class="body-part" data-part="Left_Arm" onclick="handleBodyPartClick(event)"></div>
+                      <div id="right-leg" class="body-part" data-part="Right_Leg" onclick="handleBodyPartClick(event)"></div>
+                      <div id="left-leg" class="body-part" data-part="Left_Leg" onclick="handleBodyPartClick(event)"></div>
+                      <div id="right-foot" class="body-part" data-part="Right_Foot" onclick="handleBodyPartClick(event)"></div>
+                      <div id="left-foot" class="body-part" data-part="Left_Foot" onclick="handleBodyPartClick(event)"></div>
+                    </div>
+                  
+                  </div>
+                  <div id="part-info">
+                    <div class="header-container">
+                        <div class="header-box">
+                            <h3 class="front-header">Front</h3>
+                        </div>
+                        <div class="header-box">
+                            <h3 class="back-header">Back</h3>
+                        </div>
+                    </div>
+                   </div>
+                    
+                    <div id="body-part">
+                       <h2>Body Part Information</h2>
+                    </div>
+                    <p id="part-name">Click on a body part that's causing discomfort</p>
+                  </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="last_line" class="section-p2">
+        <a href="#"><img src="{% static 'home/Image/MediWell_Body.jpg' %}" alt=""></a>
+        <div class="about-us">
+            <button onclick="#">About Us</button>
+        </div>
+        <div class="Blog">
+            <button onclick="#">Blog</button>
+        </div>
+        <div class="Creators">
+            <button onclick="#">Creators</button>
+        </div>
+        <div class="Help Center">
+            <button onclick="#">Help Center</button>
+        </div>
+        <div class="FAQs">
+            <button onclick="#">FAQs</button>
+        </div>
+        <div class="User Guides">
+            <button onclick="#">User Guides</button>
+        </div>
+        <div class="Academy">
+            <button onclick="#">Academy</button>
+        </div>
+        <div class="chat Support">
+            <button onclick="#">chat Support</button>
+        </div>
+        <div class="info">
+            <div class="section-p3">
+                <div class="left">
+                    <button onclick="#">Cookies Policy</button>
+                </div>
+                <div class="left">
+                    <button onclick="#">Legal Terms</button>
+                </div>
+                <div class="left">
+                    <button onclick="#">Privacy Policy</button>
+                </div>
+            </div>
+            <div class="section-p4">
+                <div class="Twitter">
+                    <button onclick="#">Twitter</button>
+                </div>
+                <div class="Facebook">
+                    <button onclick="#">Facebook</button>
+                </div>
+                <div class="Instagram">
+                    <button onclick="#">Instagram</button>
+                </div>
+                <div class="Youtube">
+                    <button onclick="#">Youtube</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="{% static 'prediction/body_check.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,310 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symptom Input</title>
+    <link rel="stylesheet" href="{% static 'prediction/symptom_check.css' %}">
+    <style>
+        #navbar {
+            display: flex;
+            align-items: center;
+        }
+        #navbar li {
+            margin-right: 20px;
+            list-style-type: none;
+        }
+        .avatar-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        .avatar-link img {
+            margin-right: 5px;
+            border-radius: 50%;
+            width: 30px; /* Adjust as needed */
+            height: 30px; /* Adjust as needed */
+        }
+        #navbar li a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+        }
+
+        h1 {
+            margin-top: 50px; /* Adjust the top margin as needed */
+            margin-left: 100px;
+            text-decoration: underline;
+            margin-bottom: 10px;
+        }
+
+        
+        #symptom-input {
+            margin-left: 100px;
+            margin-top: 20px;
+            width: 300px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        #dropdown {
+            margin-left: 100px;
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 150px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        #dropdown div {
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            cursor: pointer;
+        }
+        #dropdown div:hover {
+            background-color: #f1f1f1;
+        }
+        #selected-symptoms {
+            margin-top: 20px;
+            margin-left: 100px;
+        }
+        #selected-symptoms div {
+            background-color: #f0f0f0;
+            padding: 5px 10px;
+            margin-right: 5px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        #submit-btn {
+            margin-left: 100px;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            
+        }
+        #submit-btn:hover {
+            background-color: #0056b3;
+        }
+        #disease-box {
+            margin-bottom: 205px;
+            margin-left: 100px;
+            margin-top: 40px;
+            padding: 10px;
+            font-size: 18px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f0f0f0;
+            width: 40%;
+            height: 80px;
+        }
+    </style>
+</head>
+<body>
+    <section id="header">
+        <a href="#"><img src="{% static 'home/Image/MediWell_Home.jpg' %}" class="logo" alt=""></a>
+        <ul id="navbar">
+            <li><a href="{% url 'home:home' %}">Home</a></li>
+            <li><a href="{% url 'home:features' %}">Features</a></li>
+            <li><a href="{% url 'home:contact' %}">Contact a Doctor</a></li>
+            <li><a href="{% url 'home:search' %}">Search</a></li>
+            <li><a href="{% url 'home:about' %}">About Us</a></li>
+            {% if user.is_authenticated %}
+                <li>
+                    <a href="{% url 'profile' %}">
+                        <img class="user-avatar" src="{% static 'home/Image/avatar-icon.png' %}" alt="User Avatar">
+                    </a>
+                </li>
+            {% else %}
+                <li><a href="{% url 'signup' %}">Sign Up</a></li>
+            {% endif %}
+        </ul>
+    </section>
+    <h1>Symptom Check</h1>
+    <input type="text" id="symptom-input" placeholder="Enter symptoms">
+    <div id="dropdown"></div> <!-- Added a div for dropdown list -->
+    <div id="selected-symptoms"></div> <!-- Added a div for selected symptoms -->
+    <button type="button" id="submit-btn">Submit Symptoms</button>
+    <div id="disease-box"></div>
+    <div id="disclaimer">Disclaimer: The diseases predicted are prone to being inaccurate and therefore should not be considered as the final diagnosis.</div>
+
+
+    <section id="last_line" class="section-p2">
+        <a href="#"><img src="{% static 'home/Image/MediWell_Home.jpg' %}" alt=""></a>
+        <div class="about-us">
+            <button onclick="#">About Us</button>
+        </div>
+        <div class="Blog">
+            <button onclick="#">Blog</button>
+        </div>
+        <div class="Creators">
+            <button onclick="#">Creators</button>
+        </div>
+        <div class="Help Center">
+            <button onclick="#">Help Center</button>
+        </div>
+        <div class="FAQs">
+            <button onclick="#">FAQs</button>
+        </div>
+        <div class="User Guides">
+            <button onclick="#">User Guides</button>
+        </div>
+        <div class="Academy">
+            <button onclick="#">Academy</button>
+        </div>
+        <div class="chat Support">
+            <button onclick="#">chat Support</button>
+        </div>
+        <div class="info">
+            <div class="section-p3">
+                <div class="left">
+                    <button onclick="#">Cookies Policy</button>
+                </div>
+                <div class="left">
+                    <button onclick="#">Legal Terms</button>
+                </div>
+                <div class="left">
+                    <button onclick="#">Privacy Policy</button>
+                </div>
+            </div>
+            <div class="section-p4">
+                <div class="Twitter">
+                    <button onclick="#">Twitter</button>
+                </div>
+                <div class="Facebook">
+                    <button onclick="#">Facebook</button>
+                </div>
+                <div class="Instagram">
+                    <button onclick="#">Instagram</button>
+                </div>
+                <div class="Youtube">
+                    <button onclick="#">Youtube</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var selectedSymptoms = [];
+            var symptomLists = [
+                ['acidity', 'back_pain', 'bladder_discomfort', 'breathlessness', 'burning micturition',
+                'chest_pain', 'chills', 'constipation', 'continuous_sneezing', 'cough', 'cramps', 'fatigue',
+                'headache', 'high_fever', 'indigestion', 'joint_pain', 'mood_swings', 'muscle_wasting',
+                'muscle_weakness', 'neck_pain', 'pain_during_bowel_movements', 'patches_in_throat',
+                'pus_filled_pimples', 'shivering', 'skin_rash', 'stiff_neck', 'stomach_pain', 'sunken_eyes',
+                'vomiting', 'weakness_in_limbs', 'weight_gain', 'weight_loss', 'yellowish_skin', 'itching'],
+                ['abdominal_pain', 'acidity', 'anxiety', 'blackheads', 'bladder_discomfort', 'blister', 'breathlessness',
+                'bruising', 'chest_pain', 'chills', 'cold_hands_and_feets', 'cough', 'cramps', 'dehydration', 'dizziness',
+                'fatigue', 'foul_smell_of urine', 'headache', 'high_fever', 'indigestion', 'joint_pain', 'knee_pain', 'lethargy',
+                'loss_of_appetite', 'mood_swings', 'nausea', 'neck_pain', 'nodal_skin_eruptions', 'pain_during_bowel_movements',
+                'pain_in_anal_region', 'patches_in_throat', 'pus_filled_pimples', 'restlessness', 'shivering', 'skin_peeling',
+                'skin_rash', 'stiff_neck', 'stomach_pain', 'sunken_eyes', 'sweating', 'swelling_joints', 'ulcers_on_tongue',
+                'vomiting', 'weakness_in_limbs', 'weakness_of_one_body_side', 'weight_gain', 'weight_loss', 'yellowish_skin'],
+                ['abdominal_pain', 'altered_sensorium', 'anxiety', 'blackheads', 'blister', 'bloody_stool', 'blurred_and_distorted_vision',
+                'breathlessness', 'bruising', 'burning_micturition', 'chest_pain', 'chills', 'cold_hands_and_feets', 'continuous_feel_of_urine',
+                'cough', 'dark_urine', 'dehydration', 'diarrhoea', 'dischromic _patches', 'dizziness', 'extra_marital_contacts', 'fatigue',
+                'foul_smell_of urine', 'headache', 'high_fever', 'hip_joint_pain', 'joint_pain', 'knee_pain', 'lethargy', 'loss_of_appetite',
+                'loss_of_balance', 'mood_swings', 'movement_stiffness', 'nausea', 'neck_pain', 'nodal_skin_eruptions', 'obesity',
+                'pain_in_anal_region', 'red_sore_around_nose', 'restlessness', 'scurring', 'silver_like_dusting', 'skin_peeling',
+                'spinning_movements', 'stomach_pain', 'sweating', 'swelling_joints', 'swelling_of_stomach', 'ulcers_on_tongue', 'vomiting',
+                'watering_from_eyes', 'weakness_of_one_body_side', 'weight_loss', 'yellowish_skin']
+            ];
+
+            // Function to update the suggestion
+            
+            function updateSuggestions(input, list) {
+                var suggestions = [];
+                var enteredSymptoms = input.split(',').map(function(symptom) {
+                    return symptom.trim().toLowerCase();
+                });
+
+                list.forEach(function(symptom) {
+                    enteredSymptoms.forEach(function(enteredSymptom) {
+                        if (symptom.startsWith(enteredSymptom)) {
+                            suggestions.push(symptom);
+                        }
+                    });
+                });
+
+                var dropdown = $('#dropdown');
+                dropdown.empty();
+                
+                suggestions.forEach(function(symptom) {
+                    dropdown.append($('<div>').text(symptom));
+                });
+
+                if (suggestions.length > 0) {
+                    dropdown.show();
+                } else {
+                    dropdown.hide();
+                }
+            }
+
+            // Event handler for input change in the search box
+            $('#symptom-input').on('input', function() {
+                var input = $(this).val().trim();
+                var numSelectedSymptoms = $('#selected-symptoms div').length;
+                var currentSymptomList = symptomLists[numSelectedSymptoms];
+                updateSuggestions(input, currentSymptomList);
+            });
+
+            // Event handler for selecting a suggestion
+            $('#dropdown').on('click', 'div', function() {
+                var selectedSymptom = $(this).text();
+                selectedSymptoms.push(selectedSymptom);
+                updateSelectedSymptoms();
+                $('#symptom-input').val('');
+                $('#dropdown').hide();
+            });
+
+            // Function to update the selected symptoms box
+            function updateSelectedSymptoms() {
+                var selectedSymptomsContainer = $('#selected-symptoms');
+                selectedSymptomsContainer.empty();
+                selectedSymptoms.forEach(function(symptom) {
+                    selectedSymptomsContainer.append($('<div>').text(symptom));
+                });
+            }
+            // Function to update the disease name box
+            function updateDiseaseName(diseaseName) {
+                $('#disease-box').text('Predicted Disease: ' + diseaseName);
+            }
+
+            // Event handler for submitting symptoms
+            $('#submit-btn').click(function() {
+                if (selectedSymptoms.length > 0) {
+                    $.ajax({
+                        url: '/save-symptoms/',
+                        type: 'POST',
+                        headers: { 'X-CSRFToken': '{{ csrf_token }}' },
+                        data: { symptoms: selectedSymptoms },
+                        success: function(response) {
+                            console.log(response);
+                            updateDiseaseName(response.diseaseName);
+                            
+                        },
+                        error: function(xhr, status, error) {
+                            console.error(xhr.responseText);
+                            alert('Error occurred while submitting symptoms.');
+                        }
+                    });
+                } else {
+                    alert('Please select at least one symptom.');
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>
