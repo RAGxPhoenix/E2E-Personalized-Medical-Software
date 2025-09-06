@@ -12,7 +12,7 @@ Welcome to the **E2E Personalized Medical Software** repository! 🌟
 This project is a collaborative effort by a team of passionate developers aiming to revolutionize healthcare through personalized software solutions.  
 From backend development to machine learning integration, our goal is to create a seamless and intelligent healthcare experience. 💡
 
-![Medical GIF](https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif)
+![Medical GIF](https://giphy.com/gifs/funny-humor-medical-3o7TKuFYevgE2b6Mx2)
 
 ---
 
